@@ -1,0 +1,65 @@
+FORMAT: 1A
+HOST: http://playlist.apiblueprint.org/
+
+# Playlist
+
+Playlist is a simple API allowing consumers to view the total number of plays a song has.
+
+## All songs [/songs]
+
+### List All Songs [GET]
+
++ Response 200 (application/json)
+
+        [
+            {
+                "Artist": "Bruno Mars",
+                "Song": "That's what i like",
+                "plays": ""
+                    }
+                ]
+            }
+        ]
+
+### Add Song(s) [POST]
+
+You may add your own song using this action. It takes a JSON
+object containing an artistr and a collection of there songs.
+
++ Request (application/json)
+
+        {
+            "artist": "Favourite programming language?",
+            "songs": [
+                "24k Magic",
+                "The lazy song",
+                "Just the way you are",
+            ]
+        }
+
++ Response 201 (application/json)
+
+    + Headers
+
+            Location: /questions/2
+
+    + Body
+
+            {
+                "Artist": "Bruno Mars",
+                "Plays": [
+                    {
+                        "song": "24k Magic",
+                        "plays": 0
+                    }, {
+                        "song": "That's what i like",
+                        "plays": 0
+                    }, {
+                        "song": "The lazy song",
+                        "plays": 0
+                    }, {
+                        "song": "Just the way you are",
+                        "plays": 0
+                    }
+                ]
+            }
